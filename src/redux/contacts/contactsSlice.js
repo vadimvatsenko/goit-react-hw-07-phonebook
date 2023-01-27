@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-//local storage 
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage';
-//
+
 const contactsInitialState = [];
 
 const contactsSlice = createSlice({
