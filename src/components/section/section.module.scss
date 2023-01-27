@@ -1,0 +1,22 @@
+@import 'styles/main.scss';
+
+.phonebook {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    padding: 20px;
+    height: 95vh;
+
+    width: 600px;
+
+    background-color: $mainBgColor;
+    margin: 0 auto;
+
+    border-radius: 10px;
+    box-shadow: $mainBoxShadow;
+}
+
+h1 {
+    color: $mainTextColor;
+}

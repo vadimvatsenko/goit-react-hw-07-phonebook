@@ -1,16 +1,20 @@
+import Section from "./section";
+import Contacts from "./contacts";
+import Form from "./form/form";
+import Filter from './filter'
+// import { useSelector } from "react-redux";
+
 export const App = () => {
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Section title='Phonebook'>
+      <Form />
+        <Contacts title='Contacts'>
+          <Filter />
+        </Contacts>
+    </Section>
   );
-};
+}
+
+
+

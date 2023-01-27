@@ -1,0 +1,78 @@
+@import 'styles/main.scss';
+
+%contacts-style {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    color: $mainTextColor;
+    margin-top: 20px;
+    background-color: $secondBgColor;
+    border-radius: 10px;
+    padding: 20px 40px;
+
+    box-shadow: $secondBoxShadow;
+
+    flex-grow: 1;
+
+}
+
+.contacts {
+    @extend %contacts-style
+}
+
+.contacts__emty {
+    @extend %contacts-style;
+    background-image: repeating-linear-gradient($secondBgColor 0px, $secondBgColor 24px, $mainTextColor 25px);
+}
+
+
+.contacts__wrap {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+
+}
+
+.contacts__list {
+    height: 100px;
+
+}
+
+.contacts__item+.contacts__item {
+    margin-top: 10px;
+}
+
+.contacts__item {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border: 1px solid $green;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: $mainBgColor;
+
+
+    color: $mainTextColor;
+    transition: .3s $timing-function
+}
+
+.contacts__item:hover {
+    box-shadow: $contactsBoxShsdow;
+}
+
+
+.contacts__button {
+    @extend %button
+}
+
+.contacts__button:hover {
+    @extend %button-hover;
+    background-color: $btnContactBgHoverColor;
+    box-shadow: $btnContactHoverBoxShadow;
+}

@@ -1,0 +1,14 @@
+@import 'styles/main.scss';
+
+.filter__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter__title {
+    margin-top: 10px;
+}
+
+.filter__input {
+    @extend %input;
+}
