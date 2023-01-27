@@ -8,14 +8,13 @@ import { getContacts, getFilters } from "redux/contacts/selectors";
 
 export default function Contacts({ title, children }) {
     const dispatch = useDispatch()
-    const contacts = useSelector(getContacts);
+    const { items, isLoading, error } = useSelector(getContacts);
     const filter = useSelector(getFilters);
-    // const filter = '';
-    //
-    const filterContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())) 
+
+    const filterContacts = items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())) 
     //
         
-        if (contacts.length < 1 ) {
+        if (items.length < 1 ) {
             return (
                 <div className={style.contacts__emty}>
                     <h2>Missing contacts</h2>

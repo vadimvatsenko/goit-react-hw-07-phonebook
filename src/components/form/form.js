@@ -8,7 +8,7 @@ import { addContacts } from 'redux/contacts/contactsSlice';
 import { getContacts } from 'redux/contacts/selectors';
 
 export default function Form() {
-    const contacts = useSelector(getContacts);
+    const {items} = useSelector(getContacts);
     const dispatch = useDispatch()
 
     const nameInputId = nanoid();
@@ -26,7 +26,7 @@ export default function Form() {
         number: number.value
         };
     
-    const getAllContactsNames = contacts.map(cont => cont.name);
+    const getAllContactsNames = items.map(cont => cont.name);
         if (getAllContactsNames.includes(resultName)) {
             form.reset();
             return Notify.warning(`${resultName} is already in contacts`);
