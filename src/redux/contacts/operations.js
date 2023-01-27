@@ -8,7 +8,7 @@ import {
 
 axios.defaults.baseURL = "https://63d3e9f8a93a149755b5ebb6.mockapi.io/api/v1";
 
-const fetchTasks = () => async dispatch => {
+export const fetchContatcts = () => async dispatch => {
     try {
     // Индикатор загрузки
     dispatch(fetchingInProgress());
@@ -22,4 +22,4 @@ const fetchTasks = () => async dispatch => {
   }
 };
 
-fetchTasks();
+// fetchTasks();

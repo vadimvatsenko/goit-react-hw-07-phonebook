@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { fetchContatcts } from "redux/contacts/operations";
 import style from "./contacts.module.scss";
 import PropTypes from 'prop-types';
 import React from "react";
@@ -11,8 +13,13 @@ export default function Contacts({ title, children }) {
     const { items, isLoading, error } = useSelector(getContacts);
     const filter = useSelector(getFilters);
 
+    console.log(error)
+
     const filterContacts = items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())) 
     //
+    useEffect(() => {
+    dispatch(fetchContatcts());
+    }, [dispatch]);
         
         if (items.length < 1 ) {
             return (
@@ -22,11 +29,13 @@ export default function Contacts({ title, children }) {
             );
         }
                 
-        return (
+    return (
+            
             
             <div className={style.contacts}>
-            
-                <h2>{title}</h2>
+                {isLoading && <p>Loading tasks...</p>}
+                {error ? (<p>{error}</p>) :
+                (<div><h2>{title}</h2>
                 {children}
                 <div className={style.contacts__wrap}>
            
@@ -46,7 +55,9 @@ export default function Contacts({ title, children }) {
                             </li>
                         ))}
                     </ul>
-                </div>
+                    </div>
+                </div>)}
+                
             </div>
         );
 };
