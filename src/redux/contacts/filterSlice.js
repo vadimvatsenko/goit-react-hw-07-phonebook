@@ -10,8 +10,6 @@ const filtersSlice = createSlice({
     filterContacts(state, action) {
       return (state = action.payload)
     },
-    
-
   },
 });
 

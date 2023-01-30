@@ -22,10 +22,8 @@ export default function Filter() {
         // setSearchParams({ contactName: name })
     }
 
-    
-
     return (
-        <form className={style.filter__form}> 
+        <form className={style.filter__form}>
             <label
                 htmlFor={idForFilter}
                 className={style.filter__title}>
@@ -36,11 +34,11 @@ export default function Filter() {
                 id={idForFilter}
                 type="text"
                 name="filter"
-                onChange={changeFilter} 
+                onChange={changeFilter}
                 value={filter}
             />
         </form>
-    )
+    );
 }
 
 
