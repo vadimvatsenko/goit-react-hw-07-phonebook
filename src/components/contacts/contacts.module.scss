@@ -14,7 +14,7 @@
     box-shadow: $secondBoxShadow;
 
     flex-grow: 1;
-
+    height: 100%
 }
 
 .contacts {
@@ -39,8 +39,7 @@
 }
 
 .contacts__list {
-    min-height: 100px;
-
+    overflow-y: auto;
 }
 
 .contacts__item+.contacts__item {

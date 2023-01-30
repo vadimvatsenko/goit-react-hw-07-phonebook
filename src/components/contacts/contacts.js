@@ -47,8 +47,11 @@ export default function Contacts({ title, children }) {
         
             </div>}
             {error ? (<p>{error}</p>) :
-                (<div><h2>{title}</h2>
-                    {children}
+                (<div>
+                    <div>
+                        <h2>{title}</h2>
+                        {children}
+                    </div>
                     <div className={style.contacts__wrap}>
                         <ul
                             className={style.contacts__list}>
