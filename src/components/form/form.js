@@ -4,8 +4,9 @@ import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio'
 import { useSelector, useDispatch } from "react-redux";
 // import { addContacts } from "redux/contacts/actions";
-import { addContacts } from 'redux/contacts/contactsSlice';
+// import { addContacts } from 'redux/contacts/contactsSlice';
 import { getContacts } from 'redux/contacts/selectors';
+import { addContacts } from 'redux/contacts/operations';
 
 export default function Form() {
     const {items} = useSelector(getContacts);
@@ -17,24 +18,36 @@ export default function Form() {
     const formSubmitHandle = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
-        const { name, number } = e.target;
+        const { name, number } = e.currentTarget;
+        console.log(name.value)
         const resultName = name.value.toLowerCase().split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' ');
-
         const newContact = {
         id: nanoid(),
         name: resultName,
         number: number.value
         };
-    
-    const getAllContactsNames = items.map(cont => cont.name);
-        if (getAllContactsNames.includes(resultName)) {
-            form.reset();
-            return Notify.warning(`${resultName} is already in contacts`);
-            } else {
-            dispatch(addContacts(newContact));
-            form.reset();
-        }
+       
+        dispatch(addContacts(newContact));
+        form.reset();
     }
+        // const { name, number } = e.target;
+        // const resultName = name.value.toLowerCase().split(/\s+/).map(word => word[0].toUpperCase() + word.substring(1)).join(' ');
+
+        // const newContact = {
+        // id: nanoid(),
+        // name: resultName,
+        // number: number.value
+        // };
+    
+    // const getAllContactsNames = items.map(cont => cont.name);
+    //     if (getAllContactsNames.includes(resultName)) {
+    //         form.reset();
+    //         return Notify.warning(`${resultName} is already in contacts`);
+    //         } else {
+    //         dispatch(addContacts(newContact.text));
+    //         form.reset();
+    //     }
+    // }
 
 
     return (

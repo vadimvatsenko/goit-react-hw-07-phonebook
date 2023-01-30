@@ -5,15 +5,25 @@ import PropTypes from 'prop-types';
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 // import { delContacts } from "redux/contacts/actions";
-import { delContacts } from "redux/contacts/contactsSlice";
+// import { delContacts } from "redux/contacts/contactsSlice";
 import { getContacts, getFilters } from "redux/contacts/selectors";
+import { deleteContacts } from "redux/contacts/operations";
+import FadeLoader from "react-spinners/FadeLoader";
+
+const fadeLoaderCss = {
+    // position: 'absolute',
+    // left: '-50%',
+    // borderColor: 'red'
+    position: 'absolute',
+    display: 'block',
+    right: '50%'
+}
+
 
 export default function Contacts({ title, children }) {
     const dispatch = useDispatch()
     const { items, isLoading, error } = useSelector(getContacts);
     const filter = useSelector(getFilters);
-
-    console.log(error)
 
     const filterContacts = items.filter(item => item.name.toLowerCase().includes(filter.toLowerCase())) 
     //
@@ -33,7 +43,19 @@ export default function Contacts({ title, children }) {
             
             
             <div className={style.contacts}>
-                {isLoading && <p>Loading tasks...</p>}
+            {isLoading && <div>
+                            <FadeLoader
+                            color="#ffffff"
+                            cssOverride={fadeLoaderCss}
+                            height={10}
+                            loading={true}
+                            margin={10}
+                            radius={20}
+                            speedMultiplier={3}
+                            width={20}
+                            />
+        
+                        </div>}
                 {error ? (<p>{error}</p>) :
                 (<div><h2>{title}</h2>
                 {children}
@@ -48,7 +70,7 @@ export default function Contacts({ title, children }) {
                                 <button
                                     className={style.contacts__button}
                                     type='button'
-                                    onClick={() => { dispatch(delContacts(id)) }}
+                                    onClick={() => { dispatch(deleteContacts(id)) }}
                                 >
                                     Remove
                                 </button>

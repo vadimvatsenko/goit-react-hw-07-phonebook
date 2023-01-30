@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContatcts } from "./operations";
+import { addContacts } from "./operations";
+import { deleteContacts } from "./operations";
 
 export const contactsSlice = createSlice({
   name: "contacts",
@@ -10,6 +12,18 @@ export const contactsSlice = createSlice({
   },
     // Добавляем обработку внешних экшенов
   extraReducers: {
+     [addContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [addContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
+    [addContacts.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     [fetchContatcts.pending](state) {
       state.isLoading = true;
     },
@@ -22,12 +36,26 @@ export const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+
+    [deleteContacts.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.items.findIndex(
+        task => task.id === action.payload.id
+      );
+      state.items.splice(index, 1);
+    },
+    [deleteContacts.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
     
   },
 });
 
-
-export const { fetchingInProgress, fetchingSuccess, fetchingError, addContacts, delContacts } = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
 
