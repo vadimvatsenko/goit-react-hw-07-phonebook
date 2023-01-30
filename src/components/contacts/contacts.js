@@ -15,8 +15,7 @@ const fadeLoaderCss = {
     // left: '-50%',
     // borderColor: 'red'
     position: 'absolute',
-    display: 'block',
-    right: '50%'
+    right: '200px'
 }
 
 
