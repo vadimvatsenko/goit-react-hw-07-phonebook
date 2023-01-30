@@ -12,7 +12,7 @@ import './styles/main.scss';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/goit-react-hw-07-phonebook">
         <App />
       </BrowserRouter>
     </Provider>

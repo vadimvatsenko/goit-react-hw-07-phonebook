@@ -2,25 +2,24 @@
 import React from "react";
 import style from './filter.module.scss';
 import { nanoid } from 'nanoid';
-// import { filterContacts } from "redux/contacts/actions";
 import { filterContacts } from "redux/contacts/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilters } from "redux/contacts/selectors";
+import { selectFilters } from "redux/contacts/selectors";
 // import { useSearchParams } from "react-router-dom";
 
 const idForFilter = nanoid();
 
 export default function Filter() {
     // const [searchParams, setSearchParams] = useSearchParams();
-    // const nameParam = searchParams.get("name");
+    // const contactName = searchParams.get("name");
     //
     const dispatch = useDispatch();
-    const filter = useSelector(getFilters);
+    const filter = useSelector(selectFilters);
 
     const changeFilter = e => {
         const name = e.target.value.toLowerCase();
         dispatch(filterContacts(name));
-        // setSearchParams({ nameParam: name })
+        // setSearchParams({ contactName: name })
     }
 
     

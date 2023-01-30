@@ -1,20 +1,24 @@
 import Section from "./section";
 import Contacts from "./contacts";
 import Form from "./form/form";
-import Filter from './filter'
+import Filter from './filter';
+import { Routes, Route } from "react-router-dom";
 // import { useSelector } from "react-redux";
 
 export const App = () => {
 
   return (
-    <Section title='Phonebook'>
+    <Routes>
+      <Route path="/" element={
+        <Section title='Phonebook'>
       <Form />
         <Contacts title='Contacts'>
           <Filter />
         </Contacts>
-    </Section>
+      </Section>} />
+    <Route path="*" element={<p>No Content</p>} />
+    </Routes>
   );
 }
-
 
 
